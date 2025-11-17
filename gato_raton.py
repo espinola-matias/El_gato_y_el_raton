@@ -104,3 +104,15 @@ def mover_raton(posicion_actual, posiciones_obstaculos, tamaño):
             return nueva_posicion
         else:
             print("Movimiento invalido, Casilla ocupada o fuera de limites")
+
+def inicio_juego():
+    limite_movimientos = 10
+    porcentaje_obstaculos = 0.10 
+    print("¡Bienvenido al juego del Gato y Raton!")
+    tamaño = int(input("Dime el tamaño del tablero que deseas (ej. 10): "))
+    num_casillas = tamaño * tamaño
+    num_obstaculos = int(num_casillas * porcentaje_obstaculos)
+
+    print("\n--- Modo de Juego ---")
+    print("1. Simulación (Gato IA vs Raton IA)")
+    print("2. Jugar (Gato IA vs Raton Humano)")

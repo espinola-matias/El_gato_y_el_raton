@@ -87,3 +87,20 @@ def mover_raton(posicion_actual, posiciones_obstaculos, tamaño):
     if not movimientos_validos:
         print("¡ATRAPADO! No hay movimientos disponibles")
         return posicion_actual
+    
+    while True:
+        entrada = input(f"Tu turno ({posicion_actual}) Mueve Raton ('W' (ARRIBA)/'A' (IZQUIERDA)/'S'(ABAJO)/'D' (DERECHA)): ").strip().lower()
+        
+        if entrada not in mapa_movimientos:
+            print("Entrada invaida, Usa solo W, A, S o D")
+            continue
+            
+        fila, columna = mapa_movimientos[entrada]
+        nueva_fila = fila_actual + fila
+        nueva_columna = columna_actual + columna
+        nueva_posicion = (nueva_fila, nueva_columna)
+        
+        if nueva_posicion in movimientos_validos:
+            return nueva_posicion
+        else:
+            print("Movimiento invalido, Casilla ocupada o fuera de limites")

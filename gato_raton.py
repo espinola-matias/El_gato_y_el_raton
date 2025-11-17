@@ -37,3 +37,20 @@ def evaluar_condiciones(posicion_gato, posicion_raton):
     if posicion_gato == posicion_raton:
         return -1000
     return distancia_jugadores(posicion_gato, posicion_raton)
+
+def minimax(posicion_gato, posicion_raton, posiciones_obstaculos, profundidad, turno_raton, tamaño):
+    if profundidad == 0 or posicion_gato == posicion_raton:
+        return evaluar_condiciones(posicion_gato, posicion_raton)
+
+    if turno_raton:
+        mejor_valor = -float("inf")
+        for movimiento_raton in obtener_movimientos_validos(posicion_raton, posiciones_obstaculos, tamaño): 
+            valor = minimax(posicion_gato, movimiento_raton, posiciones_obstaculos, profundidad - 1, False, tamaño)
+            mejor_valor = max(mejor_valor, valor)
+        return mejor_valor
+    else:
+        mejor_valor = float("inf")
+        for movimiento_gato in obtener_movimientos_validos(posicion_gato, posiciones_obstaculos, tamaño): 
+            valor = minimax(movimiento_gato, posicion_raton, posiciones_obstaculos, profundidad - 1, True, tamaño)
+            mejor_valor = min(mejor_valor, valor)
+        return mejor_valor

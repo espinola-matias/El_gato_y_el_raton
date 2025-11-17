@@ -129,3 +129,11 @@ def inicio_juego():
     
     posiciones_ocupadas = {posicion_gato, posicion_raton}
     posiciones_obstaculos = set()
+
+    while len(posiciones_obstaculos) < num_obstaculos:
+        fila_aleatoria = random.randint(0, tamaño - 1)
+        columna_aleatoria = random.randint(0, tamaño - 1)
+        nueva_posicion = (fila_aleatoria, columna_aleatoria)
+        
+        if nueva_posicion not in posiciones_ocupadas:
+            posiciones_obstaculos.add(nueva_posicion)

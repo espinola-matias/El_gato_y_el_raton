@@ -32,3 +32,8 @@ def obtener_movimientos_validos(posicion_actual, posiciones_obstaculos, tamaño)
 
 def distancia_jugadores(posicion_gato, posicion_raton):
     return abs(posicion_gato[0] - posicion_raton[0]) + abs(posicion_gato[1] - posicion_raton[1])
+
+def evaluar_condiciones(posicion_gato, posicion_raton):
+    if posicion_gato == posicion_raton:
+        return -1000
+    return distancia_jugadores(posicion_gato, posicion_raton)

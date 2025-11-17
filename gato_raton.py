@@ -74,3 +74,16 @@ def gato_minimax(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño):
             mejor_valor = valor
             mejor_movimiento = movimiento_gato
     return mejor_movimiento
+
+def mover_raton(posicion_actual, posiciones_obstaculos, tamaño):
+    mapa_movimientos = {
+        'w': (-1, 0),  
+        's': (1, 0),   
+        'a': (0, -1), 
+        'd': (0, 1)}
+    fila_actual, columna_actual = posicion_actual
+    
+    movimientos_validos = obtener_movimientos_validos(posicion_actual, posiciones_obstaculos, tamaño)
+    if not movimientos_validos:
+        print("¡ATRAPADO! No hay movimientos disponibles")
+        return posicion_actual

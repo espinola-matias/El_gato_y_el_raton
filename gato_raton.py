@@ -29,3 +29,6 @@ def obtener_movimientos_validos(posicion_actual, posiciones_obstaculos, tamaño)
                 movimientos_validos.append((nueva_fila, nueva_columna))
                 
     return movimientos_validos
+
+def distancia_jugadores(posicion_gato, posicion_raton):
+    return abs(posicion_gato[0] - posicion_raton[0]) + abs(posicion_gato[1] - posicion_raton[1])

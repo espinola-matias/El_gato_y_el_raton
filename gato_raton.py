@@ -137,3 +137,20 @@ def inicio_juego():
         
         if nueva_posicion not in posiciones_ocupadas:
             posiciones_obstaculos.add(nueva_posicion)
+
+    for turno in range(limite_movimientos):
+        print(f"Turno {turno + 1} ")
+        imprimir_tablero(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
+
+        if modo_simulacion:
+            posicion_raton = raton_minimax(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
+        else:
+            print("¡Tu turno como Raton!")
+            posicion_raton = mover_raton(posicion_raton, posiciones_obstaculos, tamaño)
+
+        if posicion_raton == posicion_gato:
+            imprimir_tablero(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
+            print("¡El gato atrapo al raton!")
+            break
+
+        posicion_gato = gato_minimax(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)

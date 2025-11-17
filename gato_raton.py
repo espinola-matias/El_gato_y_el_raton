@@ -154,3 +154,15 @@ def inicio_juego():
             break
 
         posicion_gato = gato_minimax(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
+
+        if posicion_gato == posicion_raton:
+            imprimir_tablero(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
+            print("¡El gato atrapo al raton!")
+            break
+
+    else:
+        imprimir_tablero(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
+        print("¡El raton logro escapar!")
+
+if __name__ == "__main__":
+    inicio_juego()

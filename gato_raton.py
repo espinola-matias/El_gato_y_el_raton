@@ -116,3 +116,16 @@ def inicio_juego():
     print("\n--- Modo de Juego ---")
     print("1. Simulación (Gato IA vs Raton IA)")
     print("2. Jugar (Gato IA vs Raton Humano)")
+
+    while True:
+        modo = input("Elige el modo (1 o 2): ").strip()
+        if modo in ['1', '2']:
+            modo_simulacion = (modo == '1')
+            break
+        print("Opcion no valida. Por favor, elige 1 o 2")
+    
+    posicion_gato = (tamaño - 1, tamaño - 1)
+    posicion_raton = (0, 0)
+    
+    posiciones_ocupadas = {posicion_gato, posicion_raton}
+    posiciones_obstaculos = set()

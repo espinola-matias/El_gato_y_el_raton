@@ -64,3 +64,13 @@ def raton_minimax(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño)
             mejor_valor = valor
             mejor_movimiento = movimiento_raton
     return mejor_movimiento 
+
+def gato_minimax(posicion_gato, posicion_raton, posiciones_obstaculos, tamaño):
+    mejor_valor = float("inf")
+    mejor_movimiento = posicion_gato
+    for movimiento_gato in obtener_movimientos_validos(posicion_gato, posiciones_obstaculos, tamaño):
+        valor = minimax(movimiento_gato, posicion_raton, posiciones_obstaculos, 5, True, tamaño)
+        if valor < mejor_valor:
+            mejor_valor = valor
+            mejor_movimiento = movimiento_gato
+    return mejor_movimiento
